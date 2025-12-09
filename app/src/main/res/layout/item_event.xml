@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <!-- Header dengan Tombol -->
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/tvEventTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btnEdit"
+                    android:text="Workshop Laravel"
+                    android:textColor="#2D3748"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:ellipsize="end"
+                    android:maxLines="2" />
+
+            <ImageButton
+                    android:id="@+id/btnEdit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toStartOf="@id/btnDelete"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:tint="#667EEA"
+                    android:contentDescription="Edit" />
+
+            <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_delete"
+                    android:tint="#F56565"
+                    android:contentDescription="Delete" />
+
+        </RelativeLayout>
+
+        <!-- Date & Time -->
+        <TextView
+                android:id="@+id/tvEventDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="8dp"
+                android:drawableStart="@android:drawable/ic_menu_my_calendar"
+                android:drawableTint="#718096"
+                android:text="2025-11-15 | 09:00:00"
+                android:textColor="#718096"
+                android:textSize="14sp" />
+
+        <!-- Location -->
+        <TextView
+                android:id="@+id/tvEventLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="8dp"
+                android:drawableStart="@android:drawable/ic_dialog_map"
+                android:drawableTint="#718096"
+                android:text="Jakarta Convention Center"
+                android:textColor="#718096"
+                android:textSize="14sp"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+        <!-- Status Badge -->
+        <TextView
+                android:id="@+id/tvEventStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_status_upcoming"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="Akan Datang"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
