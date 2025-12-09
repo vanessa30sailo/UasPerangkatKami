@@ -1,138 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <!-- Title -->
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+                android:id="@+id/etTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nama Event *"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:hint="Judul Event"
+                android:inputType="textCapSentences" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Date -->
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+                android:id="@+id/etDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Tanggal (YYYY-MM-DD) *"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginTop="8dp"
+                android:hint="Tanggal (YYYY-MM-DD)"
+                android:inputType="date" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="date"
-                    android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Time -->
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+                android:id="@+id/etTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Waktu (HH:MM:SS) *"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginTop="8dp"
+                android:hint="Waktu (HH:MM:SS)"
+                android:inputType="time" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="time"
-                    android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Location -->
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+                android:id="@+id/etLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Lokasi *"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginTop="8dp"
+                android:hint="Lokasi"
+                android:inputType="textCapWords" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Description -->
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+                android:id="@+id/etDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:hint="Deskripsi"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:minLines="3"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:lines="3"
-                    android:gravity="top" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Capacity -->
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+                android:id="@+id/etCapacity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Kapasitas"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginTop="8dp"
+                android:hint="Kapasitas (jumlah orang)"
+                android:inputType="number" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etCapacity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Status -->
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Status *"
-                android:textColor="#666666"
-                android:textSize="14sp" />
+                android:text="Status"
+                android:layout_marginTop="12dp" />
 
         <Spinner
                 android:id="@+id/spinnerStatus"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_spinner"
-                android:padding="12dp" />
-
-        <!-- Info Text -->
-        <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="* Field wajib diisi"
-                android:textColor="#999999"
-                android:textSize="12sp"
-                android:textStyle="italic" />
+                android:layout_marginTop="4dp" />
 
     </LinearLayout>
-
 </ScrollView>
