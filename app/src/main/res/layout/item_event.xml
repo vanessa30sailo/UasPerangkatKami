@@ -1,103 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginBottom="12dp"
+                                   app:cardCornerRadius="12dp"
+                                   app:cardUseCompatPadding="true"
+                                   app:cardElevation="4dp">
 
-    <LinearLayout
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:padding="16dp">
 
-        <!-- Header dengan Tombol -->
-        <RelativeLayout
+        <!-- BUTTON EDIT/DELETE DI KANAN -->
+        <LinearLayout
+                android:id="@+id/layoutActions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true">
+
+            <ImageButton
+                    android:id="@+id/btnEdit"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:tint="#FF9800"
+                    android:contentDescription="Edit" />
+
+            <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_delete"
+                    android:tint="#F44336"
+                    android:contentDescription="Delete" />
+        </LinearLayout>
+
+        <!-- KONTEN TEXT DI KIRI -->
+        <LinearLayout
+                android:id="@+id/contentLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/layoutActions"
+                android:layout_toLeftOf="@id/layoutActions"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
 
             <TextView
                     android:id="@+id/tvEventTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@id/btnEdit"
-                    android:text="Workshop Laravel"
-                    android:textColor="#2D3748"
-                    android:textSize="18sp"
+                    android:text="Judul Event"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:ellipsize="end"
-                    android:maxLines="2" />
+                    android:textColor="#222222" />
 
-            <ImageButton
-                    android:id="@+id/btnEdit"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_toStartOf="@id/btnDelete"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@android:drawable/ic_menu_edit"
-                    android:tint="#667EEA"
-                    android:contentDescription="Edit" />
+            <TextView
+                    android:id="@+id/tvEventId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID: 0"
+                    android:textSize="12sp"
+                    android:textColor="#888888"
+                    android:layout_marginTop="2dp" />
 
-            <ImageButton
-                    android:id="@+id/btnDelete"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@android:drawable/ic_menu_delete"
-                    android:tint="#F56565"
-                    android:contentDescription="Delete" />
+            <TextView
+                    android:id="@+id/tvEventDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2025-01-01 | 13:00"
+                    android:textSize="13sp"
+                    android:textColor="#555555"
+                    android:layout_marginTop="6dp" />
 
-        </RelativeLayout>
+            <TextView
+                    android:id="@+id/tvEventLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lokasi"
+                    android:textSize="13sp"
+                    android:textColor="#555555"
+                    android:layout_marginTop="2dp" />
 
-        <!-- Date & Time -->
-        <TextView
-                android:id="@+id/tvEventDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:drawablePadding="8dp"
-                android:drawableStart="@android:drawable/ic_menu_my_calendar"
-                android:drawableTint="#718096"
-                android:text="2025-11-15 | 09:00:00"
-                android:textColor="#718096"
-                android:textSize="14sp" />
+            <TextView
+                    android:id="@+id/tvEventStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:background="@drawable/bg_status_upcoming" />
+        </LinearLayout>
 
-        <!-- Location -->
-        <TextView
-                android:id="@+id/tvEventLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:drawablePadding="8dp"
-                android:drawableStart="@android:drawable/ic_dialog_map"
-                android:drawableTint="#718096"
-                android:text="Jakarta Convention Center"
-                android:textColor="#718096"
-                android:textSize="14sp"
-                android:ellipsize="end"
-                android:maxLines="1" />
-
-        <!-- Status Badge -->
-        <TextView
-                android:id="@+id/tvEventStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/bg_status_upcoming"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="6dp"
-                android:text="Akan Datang"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
