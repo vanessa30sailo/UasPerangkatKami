@@ -19,8 +19,6 @@ import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
-import java.text.SimpleDateFormat
-import java.util.*
 
 // Data Class untuk Event
 data class Event(
@@ -155,11 +153,24 @@ class MainActivity : AppCompatActivity() {
                         showLoading(false)
                         updateEmptyView()
                     }
+                } else {
+                    withContext(Dispatchers.Main) {
+                        showLoading(false)
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Gagal memuat data",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     showLoading(false)
-                    Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Error: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -267,6 +278,8 @@ class MainActivity : AppCompatActivity() {
                 if (validateInput(title, date, time, location)) {
                     updateEvent(event.id, title, date, time, location, description, capacity, status)
                     dialog.dismiss()
+                } else {
+                    Toast.makeText(this, "Lengkapi semua field!", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -282,6 +295,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showEventDetail(event: Event) {
         val message = """
+            ID: ${event.id}
             Tanggal: ${event.date}
             Waktu: ${event.time}
             Lokasi: ${event.location}
@@ -308,8 +322,15 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun createEvent(title: String, date: String, time: String, location: String,
-                            description: String, capacity: String, status: String) {
+    private fun createEvent(
+        title: String,
+        date: String,
+        time: String,
+        location: String,
+        description: String,
+        capacity: String,
+        status: String
+    ) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val jsonData = JSONObject().apply {
@@ -327,23 +348,43 @@ class MainActivity : AppCompatActivity() {
 
                 withContext(Dispatchers.Main) {
                     if (jsonResponse.getInt("status") == 201) {
-                        Toast.makeText(this@MainActivity, "Event berhasil dibuat!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Event berhasil dibuat!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         loadEvents()
                         loadStatistics()
                     } else {
-                        Toast.makeText(this@MainActivity, "Gagal membuat event", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Gagal membuat event",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Error: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
     }
 
-    private fun updateEvent(id: String, title: String, date: String, time: String,
-                            location: String, description: String, capacity: String, status: String) {
+    private fun updateEvent(
+        id: String,
+        title: String,
+        date: String,
+        time: String,
+        location: String,
+        description: String,
+        capacity: String,
+        status: String
+    ) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val jsonData = JSONObject().apply {
@@ -361,14 +402,28 @@ class MainActivity : AppCompatActivity() {
 
                 withContext(Dispatchers.Main) {
                     if (jsonResponse.getInt("status") == 200) {
-                        Toast.makeText(this@MainActivity, "Event berhasil diupdate!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Event berhasil diupdate!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         loadEvents()
                         loadStatistics()
+                    } else {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Gagal mengupdate event",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Error: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -382,14 +437,28 @@ class MainActivity : AppCompatActivity() {
 
                 withContext(Dispatchers.Main) {
                     if (jsonResponse.getInt("status") == 200) {
-                        Toast.makeText(this@MainActivity, "Event berhasil dihapus!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Event berhasil dihapus!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         loadEvents()
                         loadStatistics()
+                    } else {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Gagal menghapus event",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Error: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -494,6 +563,7 @@ class EventAdapter(
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val tvId: TextView = view.findViewById(R.id.tvEventId)          // <-- ID
         val tvTitle: TextView = view.findViewById(R.id.tvEventTitle)
         val tvDate: TextView = view.findViewById(R.id.tvEventDate)
         val tvLocation: TextView = view.findViewById(R.id.tvEventLocation)
@@ -510,6 +580,8 @@ class EventAdapter(
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val event = events[position]
+
+        holder.tvId.text = "ID: ${event.id}"   // <-- tampilkan ID
         holder.tvTitle.text = event.title
         holder.tvDate.text = "${event.date} | ${event.time}"
         holder.tvLocation.text = event.location
