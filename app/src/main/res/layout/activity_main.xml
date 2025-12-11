@@ -1,205 +1,208 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="12dp">
 
-    <!-- HEADER / GRADIENT + STATISTIC + TAB -->
+    <!-- ======================= STATISTICS CARD ======================= -->
+    <!-- ======================= STATISTICS CARD ======================= -->
     <LinearLayout
-            android:id="@+id/headerLayout"
+            android:id="@+id/statsLayout"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@drawable/bg_gradient_header">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:padding="8dp">
 
-        <TextView
-                android:id="@+id/tvHeaderTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Event Manager"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-        <TextView
-                android:id="@+id/tvHeaderSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kelola event Anda dengan mudah"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"
-                android:layout_marginTop="4dp" />
-
-        <!-- STATISTIK -->
         <LinearLayout
-                android:id="@+id/statsLayout"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:weightSum="4">
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
 
-            <!-- TOTAL -->
-            <LinearLayout
-                    android:layout_width="0dp"
+            <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:text="0"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-                <TextView
-                        android:id="@+id/tvTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Total"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp" />
-            </LinearLayout>
-
-            <!-- UPCOMING -->
-            <LinearLayout
-                    android:layout_width="0dp"
+            <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                <TextView
-                        android:id="@+id/tvUpcoming"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Akan Datang"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp" />
-            </LinearLayout>
-
-            <!-- ONGOING -->
-            <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                <TextView
-                        android:id="@+id/tvOngoing"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Berlangsung"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp" />
-            </LinearLayout>
-
-            <!-- COMPLETED -->
-            <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                <TextView
-                        android:id="@+id/tvCompleted"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Selesai"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp" />
-            </LinearLayout>
-
+                    android:text="Total"
+                    android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- TAB -->
-        <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
+        <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:tabIndicatorColor="@android:color/white"
-                app:tabTextColor="@android:color/white"
-                app:tabSelectedTextColor="@android:color/white"
-                app:tabMode="fixed"
-                app:tabGravity="fill" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
 
+            <TextView
+                    android:id="@+id/tvUpcoming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Akan Datang"
+                    android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+            <TextView
+                    android:id="@+id/tvOngoing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Berlangsung"
+                    android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+            <TextView
+                    android:id="@+id/tvCompleted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selesai"
+                    android:textSize="14sp" />
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- LIST EVENT (SCROLL DI SINI) -->
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+
+    <!-- ======================= SEARCH BY ID ======================= -->
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/headerLayout"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="80dp"
-            android:clipToPadding="false"
-            tools:listitem="@layout/item_event" />
-
-    <!-- VIEW KOSONG -->
-    <TextView
-            android:id="@+id/emptyView"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Belum ada event"
-            android:textSize="16sp"
-            android:textColor="@android:color/darker_gray"
-            android:layout_centerInParent="true"
-            android:visibility="gone" />
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:gravity="center_vertical">
 
-    <!-- LOADING -->
+        <EditText
+                android:id="@+id/etSearchId"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Cari Event Berdasarkan ID"
+                android:padding="8dp"
+                android:background="@android:drawable/edit_text" />
+
+        <Button
+                android:id="@+id/btnSearchId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cari ID"
+                android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- ======================= SEARCH BY DATE ======================= -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:gravity="center_vertical">
+
+        <EditText
+                android:id="@+id/etSearchDate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Cari Event per Tanggal (YYYY-MM-DD)"
+                android:padding="8dp"
+                android:background="@android:drawable/edit_text" />
+
+        <Button
+                android:id="@+id/btnSearchDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cari Tanggal"
+                android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- ======================= TAB FILTER ======================= -->
+    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@android:color/holo_blue_dark"
+            app:tabSelectedTextColor="@android:color/holo_blue_dark"
+            app:tabTextColor="@android:color/darker_gray"
+            android:layout_marginTop="12dp"/>
+
+    <!-- ======================= PROGRESS BAR ======================= -->
     <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="16dp"/>
+
+    <!-- ======================= EMPTY VIEW ======================= -->
+    <TextView
+            android:id="@+id/emptyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tidak ada event ditemukan"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:padding="16dp"
             android:visibility="gone" />
 
-    <!-- FAB TAMBAH -->
+    <!-- ======================= RECYCLER VIEW ======================= -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="8dp"/>
+
+    <!-- Floating Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
+            android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
-            app:srcCompat="@android:drawable/ic_input_add"
-            app:tint="@android:color/white" />
+            android:contentDescription="Add Event"
+            app:srcCompat="@android:drawable/ic_input_add"/>
 
-</RelativeLayout>
+</LinearLayout>
